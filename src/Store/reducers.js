@@ -42,12 +42,20 @@ const reducer = (state = initialStore, action) => {
         console.log(newItem);
       return update(state,{
         bookmarks:{$push:[newItem]},
-        bookmarked:{$set:true},
+        articles:{
+          [action.payload-1]:{
+            bookmarked:{$set:true}
+          }
+        },
         modalData:{
           bookmarked:{$set:true}
         }
       })
-
+    case actions.REMOVE_BOOKMARK:
+      return{
+        ...state,
+        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)
+      }
 
     case actions.TOGGLE_MODAL: {
       if (action.payload) {
@@ -68,12 +76,17 @@ const reducer = (state = initialStore, action) => {
         };
       }
     }
-    case actions.REMOVE_BOOKMARK:{
-      return {
-        ...state,
-        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)
-      }
-    }
+
+
+    //   return {
+    //     ...state,
+    //     bookmarks:state.bookmarks.filter(data=>data.id!==action.payload),
+    //     articles:{
+    //       ...state.articles,
+    //       newArticle
+    //     }
+    //   }
+    // }
     default:
       return state;
   }

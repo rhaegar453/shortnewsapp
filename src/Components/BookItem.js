@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { List, Image, Label, Segment} from "semantic-ui-react";
+import { List, Image, Label, Segment, Button, Icon} from "semantic-ui-react";
+import {removeBookmark} from '../Store/Actions';
+import {connect} from 'react-redux';
 
 
 class BookItem extends React.Component {
@@ -21,16 +23,26 @@ class BookItem extends React.Component {
   redirectToLink=()=>{
       window.open(this.props.data.fullUrl);
   }
-
+  removeBookmark=()=>{
+      console.log('Removing bookmark')
+      this.props.removeBookmark(this.props.data.id);
+  }
   render() {
     return (
         <List.Item>
           <Image avatar src={this.props.data.imageUrl} />
           <List.Content>
-            <List.Header as="a" onClick={this.redirectToLink}>{this.props.data.title}</List.Header>
+            <List.Header as="a">
+                <div style={{display:"flex", alignItems:"row", justifyContent:"space-between"}}>
+                <p  onClick={this.redirectToLink}>{this.props.data.title}</p>
+                <div style={{marginLeft:"15px"}}>
+                <Button color="red" icon basic onClick={this.removeBookmark}><Icon name="remove circle"></Icon></Button>
+                </div>
+                </div>
+            </List.Header>
             <List.Description>
                 {this.props.data.tags.map(item=>(
-                    <Label style={{borderRadius:"10px"}}>{item}</Label>
+                    <Label size="tiny" style={{borderRadius:"10px"}}>{item}</Label>
                 ))}
             </List.Description>
           </List.Content>
@@ -38,4 +50,17 @@ class BookItem extends React.Component {
     );
   }
 }
-export default BookItem;
+
+const mapStateToProps=(state)=>{
+    return{
+
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        removeBookmark:(id)=>dispatch(removeBookmark(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookItem);
