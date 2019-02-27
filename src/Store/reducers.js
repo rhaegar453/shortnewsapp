@@ -68,6 +68,12 @@ const reducer = (state = initialStore, action) => {
         };
       }
     }
+    case actions.REMOVE_BOOKMARK:{
+      return {
+        ...state,
+        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)
+      }
+    }
     default:
       return state;
   }

@@ -11,7 +11,7 @@ class Layout extends React.Component{
     render(){
         return(
             <div style={{marginTop:"20px"}}>
-                <h2><u>Todays Picks</u></h2>
+                <h2><u>Todays Top Picks</u></h2>
                 <div style={{marginTop:"10px"}}>
                 <CardGroupItem/>
                 </div>

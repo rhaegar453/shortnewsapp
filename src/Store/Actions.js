@@ -22,6 +22,13 @@ export const bookMarkArticle = articleId => {
   };
 };
 
+export const removeBookmark= articleId=>{
+  return{
+    type:actions.REMOVE_BOOKMARK,
+    payload:articleId
+  }
+}
+
 export const modalToggle = articleId => {
     console.log('Toggling the modal')
   if (articleId) {
