@@ -54,7 +54,7 @@ const reducer = (state = initialStore, action) => {
     case actions.REMOVE_BOOKMARK:
       return{
         ...state,
-        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)
+        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)//Add immer
       }
 
     case actions.TOGGLE_MODAL: {
