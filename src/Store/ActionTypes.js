@@ -1,0 +1,9 @@
+export const MAKE_FAVORITE="MAKE_FAVORITE";
+export const LIKE_ARTICLE="LIKE_ARTICLE";
+export const DISLIKE_ARTICLE='DISLIKE_ARTICLE';
+export const BOOKMARK_ARTICLE='BOOKMARK_ARTICLE';
+
+
+
+//UI actions
+export const TOGGLE_MODAL="TOGGLE_MODAL";
