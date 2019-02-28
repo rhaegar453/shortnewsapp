@@ -29,7 +29,8 @@ const reducer = (state = initialStore, action) => {
         return update(state,{
           articles:{
             [action.payload-1]:{
-              dislikes:{$apply:function(data){return data+1}}
+              likes:{$apply:function(data){return data-1}},
+              liked:{$set:false}
             }
           },
           modalData:{
