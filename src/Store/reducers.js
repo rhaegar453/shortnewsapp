@@ -1,6 +1,8 @@
 import data from "../data";
 import * as actions from "./ActionTypes";
 import update from 'react-addons-update';
+import produce from 'immer';
+
 
 const initialStore = {
   articles: data,
@@ -9,6 +11,8 @@ const initialStore = {
   modalState: false,
   modalData: {}
 };
+
+//Producers
 
 const reducer = (state = initialStore, action) => {
   switch (action.type) {
@@ -55,8 +59,20 @@ const reducer = (state = initialStore, action) => {
     case actions.REMOVE_BOOKMARK:
       return{
         ...state,
-        bookmarks:state.bookmarks.filter(data=>data.id!==action.payload)//Add immer
+        articles:state.articles.map(item=>{
+          if(item.id==action.payload){
+            return {
+              ...item,
+              bookmarked:false
+            }
+          }else{
+            return item
+          }
+        }),
+        bookmarks:state.bookmarks.filter(item=>item.id!==action.payload)
       }
+      
+
 
     case actions.TOGGLE_MODAL: {
       if (action.payload) {
@@ -77,17 +93,7 @@ const reducer = (state = initialStore, action) => {
         };
       }
     }
-
-
-    //   return {
-    //     ...state,
-    //     bookmarks:state.bookmarks.filter(data=>data.id!==action.payload),
-    //     articles:{
-    //       ...state.articles,
-    //       newArticle
-    //     }
-    //   }
-    // }
+    
     default:
       return state;
   }

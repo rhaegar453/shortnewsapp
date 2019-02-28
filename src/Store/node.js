@@ -100,6 +100,12 @@ const data=[
     }
 ]
 
-let x=data.filter(data=>data.id==2);
-console.log(x);
 
+let x=data.map(item=>{
+    if(item.id==2){
+        return {...item, bookmarked:true}
+    }
+    else return item
+})
+
+console.log(x);
