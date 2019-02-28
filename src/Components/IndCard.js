@@ -61,7 +61,9 @@ class IndCard extends React.Component {
           <Reveal.Content hidden>
             <Grid centered stackable>
               <Grid.Row centered>
+                <div style={{padding:"15px"}}>
                 <h3>{this.props.data.title}</h3>
+                </div>
                 <Grid.Column />
                 <Button.Group style={{ borderRadius: "10px" }} inverted>
                   <Button onClick={this.openModal} color="purple">
