@@ -41,7 +41,21 @@ class IndCard extends React.Component {
         <Reveal animated="move down">
           <Reveal.Content visible>
             <Card>
-              <img src={this.props.data.imageUrl} height={270} width={300} />
+              <div>
+                {this.props.data.bookmarked ?(
+                  <Label
+                  color="red"
+                    style={{
+                      position: "absolute",
+                      right: "8px",
+                      bottom: "8px"
+                    }}
+                  >
+                    Bookmarked
+                  </Label>
+                ) : null}
+                <img src={this.props.data.imageUrl} height={270} width={300} />
+              </div>
             </Card>
           </Reveal.Content>
           <Reveal.Content hidden>
@@ -86,7 +100,7 @@ class IndCard extends React.Component {
               </h3>
               <Grid.Row centered>
                 {this.props.data.tags.map(data => (
-                  <Label style={{ borderRadius: "15px", padding: "3px" }}>
+                  <Label color="green" key={data.id} style={{ borderRadius: "15px", padding: "3px" }}>
                     {data}
                   </Label>
                 ))}

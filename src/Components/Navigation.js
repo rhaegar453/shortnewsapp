@@ -23,13 +23,7 @@ class Navigation extends Component {
             active={activeItem === 'bookmarks'}
             onClick={this.handleItemClick}
           />
-          <Menu.Menu position='right'>
-            <Menu.Item
-              name='logout'
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
+          
         </Menu>
 
       </div>
