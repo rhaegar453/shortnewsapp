@@ -19,7 +19,7 @@ class CardGroupItem extends React.Component {
         <CardGroup itemsPerRow={4}>
           <ModalGrid></ModalGrid>
           {this.props.articles.map((data, index) => (
-            <IndCard key={data.id} data={data} />
+            <IndCard key={index} data={data} />
           ))}
         </CardGroup>
       </div>

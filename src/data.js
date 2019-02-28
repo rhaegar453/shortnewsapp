@@ -108,15 +108,15 @@ const data=[
     },
     {
         id:10,
-        title:"US app lets senior citizens find 'grandkids on-demand'",
-        author:"Kanishka Pandey",
-        article:"Florida-based app developers have created an app, Join Papa, to provide senior citizens with help from college students, who the app claims are like \"grandkids on-demand\". The app reportedly pays young college-going students $10 per hour to spend time with the elderly, who are charged $17. Senior citizens are charged $30 monthly to enable the feature to choose their \"grandkids\".",
-        likes:108,
+        title:"CRED to reward users for paying their credit card bills",
+        author:"Roshan Gupta",
+        article:"Former FreeCharge founder Kunal Shah's latest venture, CRED, rewards users every time they pay their credit card bills via CRED app. Users can redeem exciting rewards from some of the biggest brands like Cult.fit, Myntra, Zomato Gold, UberEats, get free meals and flight tickets among other rewards. To be eligible on CRED, users need to have a 750+ credit score.",
+        likes:300,
         liked:false,
         bookmarked:false,
-        tags:["International","Technology", "US"],
-        imageUrlL:"https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/02_feb/26_tue/img_1551199540774_165.jpg",
-        fullUrl:"https://www.newsbytesapp.com/timeline/Science/42392/189440/this-app-orders-grandkids-for-senior-citizens?utm_campaign=fullarticle&utm_medium=referral&utm_source=inshorts"
+        tags:["Startups", "India", "Fintech"],
+        imageUrl:"https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/02_feb/27_wed/img_1551267029180_926.jpg",
+        fullUrl:"https://itunes.apple.com/IN/app/id1428580080?mt=8"
     }
 ]
 

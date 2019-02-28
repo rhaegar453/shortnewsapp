@@ -71,8 +71,6 @@ const reducer = (state = initialStore, action) => {
         }),
         bookmarks:state.bookmarks.filter(item=>item.id!==action.payload)
       }
-      
-
 
     case actions.TOGGLE_MODAL: {
       if (action.payload) {

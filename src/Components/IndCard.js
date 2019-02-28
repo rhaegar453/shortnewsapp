@@ -42,7 +42,7 @@ class IndCard extends React.Component {
           <Reveal.Content visible>
             <Card>
               <div>
-                {this.props.data.bookmarked ?(
+                {this.props.data.bookmarked?(
                   <Label
                   color="red"
                     style={{
@@ -99,8 +99,8 @@ class IndCard extends React.Component {
                 <u>Tags</u>
               </h3>
               <Grid.Row centered>
-                {this.props.data.tags.map(data => (
-                  <Label color="green" key={data.id} style={{ borderRadius: "15px", padding: "3px" }}>
+                {this.props.data.tags.map((data, index) => (
+                  <Label key={index} color="green"  style={{ borderRadius: "15px", padding: "3px" }}>
                     {data}
                   </Label>
                 ))}

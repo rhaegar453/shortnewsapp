@@ -17,7 +17,7 @@ class Bookmarks extends React.Component{
             <div style={{marginTop:"10px"}}>
                 <List relaxed="very">
                 {this.props.bookmarks.map(data=>(
-                <BookItem data={data}></BookItem>
+                <BookItem key={data.id} data={data}></BookItem>
                 ))}
                     
                 </List>
