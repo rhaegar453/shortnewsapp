@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Modal,
-  Label,
-  Reveal,
-  Grid,
-  Icon,
-  Button,
-  ButtonGroup
-} from "semantic-ui-react";
 
 import {
   modalToggle,
   bookMarkArticle,
   likeArticle,
-  dislikeArticile
+  dislikeArticile,
+  removeBookmark
 } from "../Store/Actions";
 import { connect } from "react-redux";
 
@@ -51,7 +42,9 @@ class IndCard extends React.Component {
             width={350}
             height={250}
           />
-          <button className="btn btn-danger" onClick={this.bookmarkArticle} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}>{this.props.data.bookmarked?<i class="fas fa-bookmark"></i>:<i class="far fa-bookmark"></i>}</button>
+          
+          {this.props.data.bookmarked?<button className="btn btn-danger" onClick={()=>this.props.removeBookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}><i class="fas fa-bookmark"></i></button>:<button className="btn btn-danger" onClick={()=>this.props.bookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}><i class="far fa-bookmark"></i></button>}
+
           <button className="btn btn-danger" onClick={this.openModal} style={{margin:"4px",borderRadius:"10px",position:"absolute", right:"0px"}}>View Story</button>
           <div
             className="card-title text-center font-weight-bold p-2"
@@ -71,7 +64,8 @@ const mapDispatchToProps = dispatch => {
     openModal: id => dispatch(modalToggle(id)),
     bookmark: id => dispatch(bookMarkArticle(id)),
     likeArticle: id => dispatch(likeArticle(id)),
-    dislikeArticile: id => dispatch(dislikeArticile(id))
+    dislikeArticile: id => dispatch(dislikeArticile(id)),
+    removeBookmark:id=>dispatch(removeBookmark(id))
   };
 };
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Card, CardGroup, Modal } from "semantic-ui-react";
 import { connect } from "react-redux";
 import IndCard from "./IndCard";
 import { modalToggle } from "../Store/Actions";
@@ -15,13 +14,11 @@ class CardGroupItem extends React.Component {
 
   render() {
     return (
-      <div>
-        <CardGroup itemsPerRow={4}>
-          <ModalGrid></ModalGrid>
+      <div className="row">
+        <ModalGrid></ModalGrid>
           {this.props.articles.map((data, index) => (
             <IndCard key={index} data={data} />
           ))}
-        </CardGroup>
       </div>
     );
   }

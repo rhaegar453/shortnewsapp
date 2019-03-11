@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Menu, Segment } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
 
@@ -16,9 +15,10 @@ class Navigation extends Component {
 
     return (
       <nav className=" navbar navbar-expand-lg fixed-top navbar-light bg-primary">
-        <a className="navbar-brand font-weight-bold " onClick={()=>this.handleItemClick('home')}>
+        {/* <a className="navbar-brand font-weight-bold " onClick={()=>this.handleItemClick('home')}>
           NewsShorts
-        </a>
+        </a> */}
+        <Link className="navbar-brand font-weight-bold" to="home">NewsShorts</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,10 +33,11 @@ class Navigation extends Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active" onClick={()=>this.handleItemClick('bookmarks')}>
-              <a className="nav-link" >
+            <li className="nav-item active">
+            <Link className="nav-link" to="bookmarks">Bookmarks</Link>
+              {/* <a className="nav-link" >
                 Bookmarks <span class="sr-only">(current)</span>
-              </a>
+              </a> */}
             </li>
           </ul>
         </div>

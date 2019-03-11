@@ -25,7 +25,8 @@ const reducer = (state = initialStore, action) => {
                 }
             },
             modalData:{
-              liked:{$set:true}
+              liked:{$set:true},
+              likes:{$apply:(data)=>data+1}
             }
         })
 
@@ -38,7 +39,8 @@ const reducer = (state = initialStore, action) => {
             }
           },
           modalData:{
-            liked:{$set:false}
+            liked:{$set:false},
+            likes:{$apply:(data)=>data-1}
           }
         });
 
@@ -69,7 +71,8 @@ const reducer = (state = initialStore, action) => {
             return item
           }
         }),
-        bookmarks:state.bookmarks.filter(item=>item.id!==action.payload)
+        bookmarks:state.bookmarks.filter(item=>item.id!==action.payload),
+        modalData:{...state.modalData, bookmarked:false}
       }
 
     case actions.TOGGLE_MODAL: {
