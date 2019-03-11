@@ -17,6 +17,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Navigation />
+        <div style={{marginTop:"70px"}}>
         <Container>
         <Switch>
           <Route path="/" exact component={Home}></Route>
@@ -24,6 +25,7 @@ export default class App extends React.Component {
           <Route path="/bookmarks" component={Bookmarks}></Route>
         </Switch>
         </Container>
+        </div>
       </div>
     );
   }

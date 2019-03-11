@@ -42,3 +42,5 @@ export const modalToggle = articleId => {
     };
   }
 };
+
+//UI Actions
