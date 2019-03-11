@@ -1,123 +1,55 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Modal, Grid, Button, Icon } from "semantic-ui-react";
-import { modalToggle, bookMarkArticle, likeArticle, dislikeArticile} from "../Store/Actions";
+import React, {Component} from 'react';
+import {Modal} from 'react-bootstrap';
+import {connect} from 'react-redux'
+import {modalToggle, bookMarkArticle, likeArticle, dislikeArticile} from '../Store/Actions';
 
 
-
-class ModalGrid extends React.Component {
-  constructor(props) {
+class ModalItem extends React.Component{
+  constructor(props){
     super(props);
   }
 
-  onCloseClick = () => {
-    console.log("Close button clicked");
-    this.props.modalToggle();
-  };
-  visitSource=()=>{
-      window.open(this.props.modalData.fullUrl);
-  }
-  likeArticle=()=>{
-        this.props.likeArticle(this.props.modalData.id);
-  }
-  unlikeArticle=()=>{
-      this.props.dislikeArticile(this.props.modalData.id);
+  visitSite=()=>{
+    window.open(this.props.modalData.fullUrl);
   }
 
-  makeBookmark=()=>{
-    this.props.bookMarkArticle(this.props.modalData.id);
-  }
-  render() {
-    let bookmarked=this.props.modalData.bookmarked?'disabled':null;
-    return (
-      <div>
-        <Modal
-        basic
-          open={this.props.modalState}
-          centered={false}
-          onClose={this.onCloseClick}
-        >
-          <Modal.Header>
-              <div style={{display:"flex", alignItems:"row", justifyContent:"space-between"}}>
-                {this.props.modalData.title}
-                    <p style={{fontSize:"11px", opacity:"0.7"}}>Author: {this.props.modalData.author}</p>
+
+  render(){
+    return(
+        <Modal show={this.props.modalState} onHide={this.props.modalToggle} centered size="lg">
+            <Modal.Header closeButton>
+            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+            <p className="text-left" style={{margin:"5px",opacity:"0.4"}}>- {this.props.modalData.author}</p>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="d-flex justify-content-center"> 
+              <img style={{borderRadius:"10px", margin:"6px", overflowWrap:'break-word'}} width={500} src={this.props.modalData.imageUrl} ></img>
               </div>
-              <div style={{marginTop:"5px"}}>
-              <Button color="green" onClick={this.visitSource}><Icon name="linkify"></Icon>Visit Source</Button>
-              </div>
-          </Modal.Header>
-          <Modal.Content>
-            <Grid stackable>
-              <Grid.Column>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "row",
-                    justifyContent: "row"
-                  }}
-                >
-                  <img
-                    style={{
-                      boxShadow: "0 0 8px 8px inset white",
-                      borderRadius: "10px"
-                    }}
-                    width={500}
-                    src={this.props.modalData.imageUrl}
-                  />
-                  <div style={{ marginLeft: "10px" }}>
-                    <p style={{ fontSize: "18px" }}>
-                      {this.props.modalData.article}
-                    </p>
-                    <div style={{ marginTop: "30px" }} />
-                    <div style={{ marginTop: "40px" }}>
-                      <Grid>
-                        <Button.Group size="tiny">
-                          { 
-                            this.props.modalData.liked?<Button color="red" onClick={this.unlikeArticle}>
-                            <Icon name="dont" />
-                            Unlike
-                          </Button>:<Button color="twitter" onClick={this.likeArticle}>
-                            <Icon name="heart outline" />
-                            Like{console.log(this.props.modalData.liked)}
-                          </Button>}
-                          {this.props.modalData.bookmarked?<Button color="brown" disabled>
-                            <Icon name="bookmark" />
-                            Bookmarked
-                          </Button>:<Button color="brown" onClick={this.makeBookmark}>
-                            <Icon name="bookmark" />
-                            Bookmark
-                          </Button>}
-                        </Button.Group>
-                      </Grid>
-                    </div>
-                  </div>
-                </div>
-              </Grid.Column>
-            </Grid>
-          </Modal.Content>
+              <p>{this.props.modalData.article}</p>
+            </Modal.Body>
+            <Modal.Footer className="justify-content-center">
+                <button className="btn btn-danger" onClick={()=>this.props.bookMarkArticle(this.props.modalData.id)}>Bookmark</button>
+                <button className="btn btn-info" onClick={()=>this.props.likeArticle(this.props.modalData.id)}>Like</button>
+                <button className="btn btn-warning" onClick={this.visitSite}>Visit Story</button>
+            </Modal.Footer>
         </Modal>
-      </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    modalState: state.card.modalState,
-    modalData: state.card.modalData
-  };
-};
+const mapStateToProps=(state)=>{
+  return{
+    modalState:state.card.modalState,
+    modalData:state.card.modalData
+  }
+}
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    modalToggle:()=>dispatch(modalToggle()),
+    bookmark:id=>dispatch(bookMarkArticle(id)),
+    likeArticle:id=>dispatch(likeArticle(id)),
+    dislikeArticile:id=>dispatch(dislikeArticile(id))
+  }
+}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    modalToggle: () => dispatch(modalToggle()),
-    bookMarkArticle:(id)=>dispatch(bookMarkArticle(id)),
-    likeArticle:(id)=>dispatch(likeArticle(id)),
-    dislikeArticile:(id)=>dispatch(dislikeArticile(id))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ModalGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalItem);

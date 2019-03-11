@@ -9,6 +9,7 @@ import {
   Button,
   ButtonGroup
 } from "semantic-ui-react";
+
 import {
   modalToggle,
   bookMarkArticle,
@@ -16,6 +17,9 @@ import {
   dislikeArticile
 } from "../Store/Actions";
 import { connect } from "react-redux";
+
+
+
 
 class IndCard extends React.Component {
   constructor(props) {
@@ -35,95 +39,28 @@ class IndCard extends React.Component {
   dislikeArticile = () => {
     this.props.dislikeArticile(this.props.data.id);
   };
+
   render() {
     return (
-      <div style={{ padding: "10px" }}>
-        <Reveal animated="move down">
-          <Reveal.Content visible>
-            <Card>
-              <div>
-                {this.props.data.bookmarked?(
-                  <Label
-                  color="red"
-                    style={{
-                      position: "absolute",
-                      right: "8px",
-                      bottom: "8px"
-                    }}
-                  >
-                    Bookmarked
-                  </Label>
-                ) : null}
-                <img src={this.props.data.imageUrl} height={270} width={300} />
-              </div>
-            </Card>
-          </Reveal.Content>
-          <Reveal.Content hidden>
-            <Grid centered stackable>
-              <Grid.Row centered>
-                <div style={{padding:"15px"}}>
-                <h3>{this.props.data.title}</h3>
-                </div>
-                <Grid.Column />
-                <Button.Group style={{ borderRadius: "10px" }} inverted>
-                  <Button onClick={this.openModal} color="purple">
-                    Details
-                  </Button>
-                  {this.props.data.liked ? (
-                    <Button onClick={this.dislikeArticile} color="red">
-                      <Icon name="dont" />
-                      {console.log(this.props.data.liked)}
-                      Dislike
-                    </Button>
-                  ) : (
-                    <Button onClick={this.likeArticle} color="twitter">
-                      <Icon name="heart" />
-                      Like
-                    </Button>
-                  )}
-                  {this.props.data.bookmarked ? (
-                    <Button disabled color="brown">
-                      <Icon name="bookmark" />
-                      Bookmarked
-                    </Button>
-                  ) : (
-                    <Button onClick={this.bookmarkArticle} color="brown">
-                      <Icon name="bookmark" />
-                      Bookmark
-                    </Button>
-                  )}
-                </Button.Group>
-              </Grid.Row>
-            </Grid>
+      <div className="col-sm-6 col-lg-3" style={{ marginTop: "30px" }}>
+        <div className="card" style={{ borderRadius: "15px", borderWidth:"2px"}}>
+          <img
+            className="card-img-top"
+            style={{ borderRadius: "15px 15px 0 0" }}
+            src={this.props.data.imageUrl}
+            width={350}
+            height={250}
+          />
+          <button className="btn btn-danger" onClick={this.bookmarkArticle} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}>{this.props.data.bookmarked?<i class="fas fa-bookmark"></i>:<i class="far fa-bookmark"></i>}</button>
+          <button className="btn btn-danger" onClick={this.openModal} style={{margin:"4px",borderRadius:"10px",position:"absolute", right:"0px"}}>View Story</button>
+          <div
+            className="card-title text-center font-weight-bold p-2"
+            style={{ fontSize: "14px"}}
 
-            <Grid centered stackable>
-              <h3 style={{ opacity: "0.6" }}>
-                <u>Tags</u>
-              </h3>
-              <Grid.Row centered>
-                {this.props.data.tags.map((data, index) => (
-                  <Label key={index} color="green"  style={{ borderRadius: "15px", padding: "3px" }}>
-                    {data}
-                  </Label>
-                ))}
-                <Grid.Column />
-              </Grid.Row>
-            </Grid>
-            <Grid centered>
-              <Grid.Row centered>
-                <Button as="div" labelPosition="right">
-                  <Button color="red">
-                    <Icon name="heart" />
-                    Likes
-                  </Button>
-                  <Label as="a" basic color="red" pointing="left">
-                    {this.props.data.likes}
-                  </Label>
-                </Button>
-              </Grid.Row>
-            </Grid>
-          </Reveal.Content>
-        </Reveal>
+          >
+            {this.props.data.title}
+          </div>
+        </div>
       </div>
     );
   }
