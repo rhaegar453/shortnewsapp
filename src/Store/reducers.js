@@ -9,7 +9,8 @@ const initialStore = {
   loading: false,
   bookmarks: [],
   modalState: false,
-  modalData: {}
+  modalData: {},
+  pushDown:false
 };
 
 //Producers
@@ -92,6 +93,12 @@ const reducer = (state = initialStore, action) => {
           modalState: !state.modalState,
           modalObject: state.modalData
         };
+      }
+    }
+    case actions.PUSH_DOWN:{
+      return{
+        ...state,
+        pushDown:!state.pushDown
       }
     }
     

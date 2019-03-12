@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
+import {pushDown} from '../Store/Actions';
+
+
 
 class Navigation extends Component {
   state = { activeItem: "home" };
@@ -15,9 +18,6 @@ class Navigation extends Component {
 
     return (
       <nav className=" navbar navbar-expand-lg fixed-top navbar-light bg-primary">
-        {/* <a className="navbar-brand font-weight-bold " onClick={()=>this.handleItemClick('home')}>
-          NewsShorts
-        </a> */}
         <Link className="navbar-brand font-weight-bold" to="home">NewsShorts</Link>
         <button
           className="navbar-toggler"
@@ -27,6 +27,7 @@ class Navigation extends Component {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={this.props.pushDown}
         >
           <span className="navbar-toggler-icon" />
         </button>
@@ -35,9 +36,6 @@ class Navigation extends Component {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
             <Link className="nav-link" to="bookmarks">Bookmarks</Link>
-              {/* <a className="nav-link" >
-                Bookmarks <span class="sr-only">(current)</span>
-              </a> */}
             </li>
           </ul>
         </div>
@@ -46,16 +44,10 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps=(state)=>{
-  return{
-
-  }
-}
-
 const mapDispatchToProps=(dispatch)=>{
   return{
-
+    pushDown:()=>dispatch(pushDown())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation));
+export default connect(null, mapDispatchToProps)(withRouter(Navigation));

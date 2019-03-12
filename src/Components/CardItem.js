@@ -5,13 +5,13 @@ import { modalToggle } from "../Store/Actions";
 import ModalComponent from "./ModalItem";
 import { Grid, Button } from "semantic-ui-react";
 import ModalGrid from './ModalItem';
+import {FamilyConsumer} from '../App';
 
 
 class CardGroupItem extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <div className="row">

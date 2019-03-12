@@ -8,3 +8,4 @@ export const REMOVE_BOOKMARK='REMOVE_BOOKMARK';
 
 //UI actions
 export const TOGGLE_MODAL="TOGGLE_MODAL";
+export const PUSH_DOWN="PUSH_DOWN";

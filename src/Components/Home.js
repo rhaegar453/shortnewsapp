@@ -9,8 +9,9 @@ class Layout extends React.Component{
     }
 
     render(){
+        let pushDown=this.props.pushDown?"100px":"20px";
         return(
-            <div style={{marginTop:"20px"}}>
+            <div style={{marginTop:pushDown}}>
                 <h2><u>Todays Top Picks</u></h2>
                 <div style={{marginTop:"10px"}}>
                 <CardGroupItem/>
@@ -20,5 +21,11 @@ class Layout extends React.Component{
     }
 }
 
+const mapStateToProps=(state)=>{
+    return{
+        pushDown:state.card.pushDown
+    }
+}
 
-export default Layout;
+
+export default connect(mapStateToProps)(Layout);

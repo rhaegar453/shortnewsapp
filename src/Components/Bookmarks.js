@@ -9,8 +9,9 @@ class Bookmarks extends React.Component {
     super(props);
   }
   render() {
+      let pushDown=this.props.pushDown?"100px":"20px";
     return (
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: pushDown }}>
         <h2>
           <u>Bookmarks</u>
         </h2>
@@ -31,7 +32,8 @@ class Bookmarks extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    bookmarks: state.card.bookmarks
+    bookmarks: state.card.bookmarks,
+    pushDown:state.card.pushDown
   };
 };
 const mapDispatchToProps = dispatch => {

@@ -26,6 +26,7 @@ class IndCard extends React.Component {
 
   likeArticle = () => {
     this.props.likeArticle(this.props.data.id);
+    console.log(this.refs)
   };
   dislikeArticile = () => {
     this.props.dislikeArticile(this.props.data.id);
@@ -41,11 +42,12 @@ class IndCard extends React.Component {
             src={this.props.data.imageUrl}
             width={350}
             height={250}
+            ref="name"
           />
           
-          {this.props.data.bookmarked?<button className="btn btn-danger" onClick={()=>this.props.removeBookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}><i class="fas fa-bookmark"></i></button>:<button className="btn btn-danger" onClick={()=>this.props.bookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px"}}><i class="far fa-bookmark"></i></button>}
+          {this.props.data.bookmarked?<button className="btn btn-danger" onClick={()=>this.props.removeBookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px", borderWidth:"2px", borderColor:"white"}}><i class="fas fa-bookmark"></i></button>:<button className="btn btn-danger" onClick={()=>this.props.bookmark(this.props.data.id)} style={{margin:"4px",borderRadius:"10px",position:"absolute", left:"0px", borderWidth:"2px", borderColor:"white"}}><i class="far fa-bookmark"></i></button>}
 
-          <button className="btn btn-danger" onClick={this.openModal} style={{margin:"4px",borderRadius:"10px",position:"absolute", right:"0px"}}>View Story</button>
+          <button className="btn btn-danger" onClick={this.openModal} style={{margin:"4px",borderRadius:"10px",position:"absolute", right:"0px", borderWidth:"2px", borderColor:"white"}}>View Story</button>
           <div
             className="card-title text-center font-weight-bold p-2"
             style={{ fontSize: "14px"}}

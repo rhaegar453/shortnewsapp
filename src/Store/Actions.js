@@ -43,4 +43,10 @@ export const modalToggle = articleId => {
   }
 };
 
+export const pushDown=()=>{
+  return{
+    type:actions.PUSH_DOWN
+  }
+}
+
 //UI Actions
